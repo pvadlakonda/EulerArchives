@@ -16,7 +16,7 @@ public class SmallestMultiple {
             if (isDivisible) {
                 return num;
             }
-            num++;
+            num += maxNum;
         }
         return 0;
     }
