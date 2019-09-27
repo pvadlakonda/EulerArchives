@@ -7,21 +7,16 @@ public class EvenFibonacciSum {
 
     public long execute(long max) {
         long n1 = 1, n2 = 2;
-        Set<Long> fibNums = new HashSet<>();
-        fibNums.add(n1);
-        fibNums.add(n2);
+        Set<Long> evenFibNums = new HashSet<>();
+
+        evenFibNums.add(n2);
 
         while (n1 + n2 < max) {
             long tmp = n1 + n2;
-            fibNums.add(tmp);
-            n1 = n2; n2 = tmp;
-        }
-
-        Set<Long> evenFibNums = new HashSet<>();
-        for (Long num : fibNums) {
-            if (num % 2 == 0) {
-                evenFibNums.add(num);
+            if (tmp % 2 == 0) {
+                evenFibNums.add(tmp);
             }
+            n1 = n2; n2 = tmp;
         }
 
         return evenFibNums.stream().reduce(0L, Long::sum);
