@@ -11,7 +11,7 @@ class SampleTest {
     @Test
     public void test() {
 
-        int result = sample.add(2,4);
+        int result = sample.execute(2,4);
 
         assertEquals(6, result);
     }
