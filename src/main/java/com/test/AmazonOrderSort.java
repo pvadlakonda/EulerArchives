@@ -2,7 +2,6 @@ package com.test;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class AmazonOrderSort {
@@ -18,23 +17,16 @@ public class AmazonOrderSort {
             }
         }
 
-        Collections.sort(primeOrders, new Comparator<String>() {
-            @Override
-            public int compare(String s1, String s2) {
-                String[] tokens1 = s1.split(" ");
-                String[] tokens2 = s2.split(" ");
+        Collections.sort(primeOrders, (s1, s2) -> {
 
-               for (int i = 1; i < tokens1.length; i++) {
-                   if(tokens1[i].equals(tokens2[i])) {
-                       continue;
-                   } else {
-                       return tokens1[i].compareTo(tokens2[i]);
-                   }
-               }
+            String order1 = s1.substring(s1.indexOf(" ") + 1);
+            String order2 = s2.substring(s2.indexOf(" ") + 1);
 
-
-                return tokens1[0].compareTo(tokens2[0]);
+            if (!order1.equals(order2)) {
+                return order1.compareTo(order2);
             }
+
+            return s1.compareTo(s2);
         });
 
         List<String> sortedOrders = new ArrayList<>();

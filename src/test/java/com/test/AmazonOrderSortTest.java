@@ -60,4 +60,17 @@ class AmazonOrderSortTest {
         assertEquals("we3 123 545 234", sortedOrders.get(0));
         assertEquals("ad 324 34 4355", sortedOrders.get(1));
     }
+
+    @Test
+    void testPrimeOrdersOnly2() {
+
+        List<String> orders = new ArrayList<>();
+        orders.add("erc echo dot");
+        orders.add("erc echo dot gen3");
+
+        List<String> sortedOrders = solution.execute(orders);
+
+        assertEquals("erc echo dot", sortedOrders.get(0));
+        assertEquals("erc echo dot gen3", sortedOrders.get(1));
+    }
 }
