@@ -36,20 +36,16 @@ public class LargestProductSeries {
         for (int i = 0; i < numbers.length() - digits; i++) {
 
             String substring = numbers.substring(i, i + digits);
-            int subStringProduct = productOf(substring);
 
-            if (subStringProduct > product) {
-                product = subStringProduct;
-            }
+            product = Math.max(product, productOf(substring));
         }
         return product;
     }
 
     private int productOf(String numbers) {
-        String[] digits = numbers.split("");
 
         int product = 1;
-        for (String digit : digits) {
+        for (String digit : numbers.split("")) {
             Integer tmpDigit = Integer.valueOf(digit);
             if (tmpDigit != 0)
                 product *= tmpDigit;

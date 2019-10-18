@@ -1,6 +1,5 @@
 package com.euler;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,17 +13,18 @@ public class LargestPalindromeProduct {
 
     public long execute(int maxNum) {
         Set<Long> palindromes = new HashSet<>();
+        long result = 0;
 
         for (int i = maxNum; i > 0; i--) {
             for (int j = maxNum; j > 0; j--) {
-                long sum = i * j ;
-                if (isPalindrome(sum)) {
-                    palindromes.add(sum);
+                long product = i * j;
+                if (isPalindrome(product)) {
+                    result = Math.max(result, product);
                 }
             }
         }
 
-        return Collections.max(palindromes);
+        return result;
     }
 
     private boolean isPalindrome(long num) {
